@@ -1,0 +1,36 @@
+\section{Полнота и замкнутость ортогональной системы, их связь}
+\begin{greyDefinition} Счетная ортонормированная система элементов $ \Phi = \{ \varphi_k \}_{k=1}^\infty $ предгильбертова пространства $ \mathcal{E} $ называется \textbf{замкнутой}, если из равенств $ \left( f ,\varphi_k \right)=0,\; k=1,2,\ldots $ следует, что $ f = 0 $
+\end{greyDefinition}
+\begin{greyTheorem}
+	\begin{enumerate}
+		\item Если в предгильбертовом пространстве $ \mathcal{E} $ ортонормированная система элементов $ \Phi = \{ \varphi_k \}_{k=1}^\infty $ полна, то она замкнута
+		\item Если в гильбертовом пространстве $ \mathcal{H} $ ортонормированная система элементов $ \Phi = \{ \varphi_k \}_{k=1}^\infty $ замкнута, то она полна.
+	\end{enumerate}
+\end{greyTheorem}
+\begin{greyProof}
+	Докажем утверждение 1.$ \Phi $ --- полна $ \overset{\text{Т.9.2}}{\Rightarrow} \forall f \in \mathcal{E} \mapsto ||f||^2 = \sum_{k=1}^\infty f_k^2,$
+	\[
+		 f_k = (f,\varphi_k)=0, \forall k \in \mathbb{N} \Rightarrow ||f||=0 \Rightarrow f=0 \Rightarrow \Phi \text{ замкнута}
+	\]
+	Докажем утверждение 2. $ \Phi $ --- замкнута, но не является полной
+	\[
+		\exists g \in \mathcal{H}: ||g||^2 > \sum_{k=1}^\infty g_k^2 ,\; g_k =(g,\varphi_k),\; k=1,2,\ldots \Rightarrow \sum_{k=1}^\infty g_k^2 < \infty 
+	\]
+	\text{ т.к. это ряд с положительными членами, и все его част. суммы сходятся}. Тогда по т. Рисса--Фишера
+	\[
+		\exists f\in \mathcal{H}: f = \sum_{k=1}^\infty g_k\varphi_k \text{ и }	||f||^2 = \sum_{k=1}^\infty g_k^2,\; f\neq g,\; 
+	\]
+	из замкнутости следует
+	\[
+		(f-g,\varphi_k) =0,\;  \forall k \in \mathbb{N} \Rightarrow f - g =0 \Rightarrow f=g\text{ --- противоречие}
+	\]
+\end{greyProof}
+\begin{theorem}
+	Произвольная числовая последовательность $ \{ \alpha_k \} $ является последовательностью коэффициентов Фурье, некоторого элемента $ f $ гильбертова пространства $ \mathcal{H} $ по ортонормированной системе элементов $ \Phi = \{ \varphi_k  \}_{k=1}^\infty $ в том и только том случае, когда $ \sum_{k=1}^\infty \alpha_k < \infty $. При этом, если система $ \Phi $ полна, то такой элемент $ f $ из $ \mathcal{H} $ находится единственным образом. Если система $ \Phi $ не является полной, то такой элемент $ f $ находится с точностью до элемента $ g\neq 0 $, который имеет нулевой ряд Фурье.
+\end{theorem}
+\begin{proof}
+	\textit{Достаточность} следует из т. Рисса-Фишера
+		
+	\textit{Необходимость.} $$ \exists f \in \mathcal{H}: \alpha_k = (f,\varphi_k),\; k=1,2,\ldots 
+\overset{\text{ неравенство Бесселя}}{\Longrightarrow} ||f||^2 \geqslant \sum_{k=1}^\infty \alpha_k^2 \Rightarrow \sum_{k=1}^\infty \alpha_k^2 < \infty$$
+\end{proof}

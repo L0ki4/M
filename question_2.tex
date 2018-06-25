@@ -1,0 +1,77 @@
+\section{Представление частичной суммы ряда Фурье интегралом через ядро Дирихле. Принцип локализации.}
+Будем рассматривать такие функции: $ f \in L_R^1[-l,l] $
+\begin{greyDefinition}Функцию
+	\[
+	D_n(u) = \dfrac{1}{2} + \sum_{k=1}^n \cos ku
+	\]
+	называют ядром Дирихле
+\end{greyDefinition}
+Запишем частичную сумма ряда Фурье в подходящем виде:
+\begin{multline*}
+	S_n^f = \dfrac{a_0}{2} + \sum_{k=1}^n \left(a_k \cos \dfrac{k\pi x}{l} + b_k \sin \dfrac{k\pi x}{l}\right)= \\ = \dfrac{1}{2l} \int_{-l}^l f(t)dt +  \sum_{k=1}^n \Bigg( \left[ \dfrac{1}{l} \int_{-l}^l f(t)\cos \dfrac{k\pi t}{l} dt \right] \cos \dfrac{k\pi x}{l} + \left[ \dfrac{1}{l} \int_{-l}^l f(t) \sin \dfrac{k\pi t}{l}dt \right] \sin \dfrac{k\pi x}{l} \Bigg) =\\= \dfrac{1}{l} \int_{-l}^l f(t) \left[ \dfrac{1}{2} + \sum_{k=1}^n \left( \cos \dfrac{\pi k t}{l} \cos \dfrac{\pi k x}{l} + \sin \dfrac{\pi k t}{l} \sin \dfrac{\pi k x}{l} \right) \right]dt = \\ =\dfrac{1}{l} \int_{-l}^l f(t) \left[ \dfrac{1}{2} + \sum_{k=1}^n \cos \dfrac{k\pi (t-x)}{l} \right]dt = \dfrac{1}{l} \int_{-l}^{l} f(t) D_n dt
+\end{multline*}
+\begin{greySmth}{Свойства.}
+\textbf{Свойства ядра Дирихле:}
+\begin{enumerate}
+	\item $ D_n (u) = D_n(-u) $ --- функция четная
+	\item $ D_n(u+2\pi) = D_n(u) $ --- функция периодическая с периодом $ 2\pi $
+	\item $ D_n(u)  $ --- непрерывная на $ \mathbb{R} $ функция
+	\item $ D_n(u) = \dfrac{\sin (n+1/2)u}{2\sin u/2},\; u \neq 2\pi m\; \forall m \in \mathbb{Z} $, НО \[
+	\lim\limits_{u \rightarrow 0} D_n(u) = (n+\frac{1}{2})
+	\]
+	\item $ \int_{-\pi}^{\pi} D_n(x)dx = \pi \overset{\text{Св. 1}}{\Longrightarrow} \int_{0}^{\pi} D_n(x) dx= \pi/2,\; \forall l \mapsto \int_{0}^{l} D_n\left(\dfrac{\pi}{l}y\right)dy = l/2 $
+\end{enumerate}
+\end{greySmth}
+\begin{greyProof} Свойство 4.
+	\begin{multline*}
+		D_n(u) \sin \frac{u}{2} = 1/2 \sin \frac{u}{2} + \sum_{k=1}^n \cos ku \sin \frac{u}{2} = 1/2 \sin \frac{u}{2} + 1/2\sum_{k=1}^n \sin (k+1/2)u - \sin (k-1/2)u =\\= 1/2 \sin (n+1/2)u
+	\end{multline*}%какая-то лажа
+\end{greyProof}
+
+Выведем Формулу Дирихле.
+\begin{greyProof}
+\text{Итак:}
+\begin{multline*}
+	S_n^f(x) = \frac{1}{l} \int_{-l}^l f(t) D_n\left(\frac{\pi}{l}(t-x)\right)dt = \frac{1}{l} \int_{x-l}^{x+l} f(t) D_n\left(\frac{\pi}{l}(t-x)\right)dt = \\
+	\left|	\begin{array}{c} \rowcolor{red!20} t-x = z,\; dt=dz,\; t=x+l,\;z=l \\ \rowcolor{Gray} t=x+z;\; z= -l\end{array}\right| \\
+	= \frac{1}{l} \int_{-l}^0 f(x+z)D_n\left(\frac{\pi}{l}z\right)dz + \frac{1}{l}\int_{0}^l f(x+z) D_n\left(\frac{\pi}{l}z\right)dz = \\ | z = -S | \\ = \frac{1}{l} \int_{0}^lf(x-S) D_n\left( - \frac{\pi}{l}S\right)dS + \frac{1}{l} \int_{0}^l f(x+z) D_n\left(\frac{\pi}{l}z\right)dz \Rightarrow
+\end{multline*}
+\[
+	\Rightarrow	S_n^f(x) = \frac{1}{l} \int_{0}^l \left[ f(x+z) + f(x-z) \right] D_n\left(\frac{\pi}{l}z\right)dz
+\]
+\end{greyProof}
+\textbf{ \large Принцип локализации.}
+\begin{greyTheorem}
+	Пусть функция $ f \in L_R^1[-l,l]$ продолжена с периодом $ 2l $ на $ \mathbb{R} $. Тогда сходимость тригонометрического ряда Фурье функции $ f $ в произвольной точке $ x_0 $ и сумма этого ряда в точке $ x_0 $ (если ряд сходится в т. $ x_0 $) зависят от поведения функции $ f $ в достаточно малой окрестности $ (x_0-\delta, x_0+\delta) $ т. $ x_0 $ при некотором $ \delta > 0 $.
+\end{greyTheorem}
+\begin{greyProof}
+	При $ u \neq 2\pi k,\; k \in \mathbb{Z} $ справедливо тождество 
+	\[
+		D_n(u) = 1/2 + \cos u + \ldots + \cos nu = \dfrac{\sin (n+ 1/2)}{2 \sin u/2}
+	\]
+\end{greyProof}
+\begin{greyEmpty}
+	и формула Дирихле: $ S_n^f(x) = \frac{1}{l} \int_{0}^l \left[ f(x+u) + f(x-u) \right] D_n\left(\frac{\pi}{l}u\right)du $
+	
+	Запишем частичную сумму
+ 	\[
+		S_n^f(x_0) = \frac{1}{l} \int_{0}^l \left[ \dfrac{ f(x_0+z) + f(x_0-z)}{2 \sin \dfrac{\pi}{2l}z} \right] \sin \left[ \frac{\pi}{l}(n+1/2)z \right]
+	\]
+	
+	Так как $  f(x_0+z) + f(x_0-z) \in L_R^1 [-l,l] $ и 
+	\[
+		\forall z: \delta\in (0;z) \mapsto \dfrac{\abs{ f(x_0+z) + f(x_0-z)}}{2 \sin \dfrac{\pi}{2l}z} \leqslant \frac{\abs{ f(x_0+z) + f(x_0-z)}}{2\sin \dfrac{\pi\delta}{2l}} \Rightarrow 
+	\]
+	То по признаку сравнения функция $ F(z) = \dfrac{ f(x_0+z) + f(x_0-z)}{2\sin \dfrac{\pi}{2l}z} \in L_R^1[-l,l] $ абсолютно интегрируема на $ [ \delta, l] $. В силу теорему об осциляции:
+	\[
+		\Rightarrow \lim\limits_{n\rightarrow \infty} \frac{1}{l} \int_{\delta}^{l} F(z) \sin \left[ \dfrac{\pi}{l}(n+1/2)z \right]dz = 0 \Rightarrow 
+	\]
+	\[
+		S_n^f(x_0) - \frac{1}{l} \int_{0}^\delta \dfrac{ f(x_0+z) + f(x_0-z)}{2\sin \dfrac{\pi z}{2l}} \sin \left[ \frac{\pi}{l}(n+1/2)z \right]dz \underset{n \rightarrow \infty}{\longrightarrow}0
+	\]
+	Это значит, что существование и величина предела $ \lim\limits_{n \rightarrow \infty} S_n^f(x_0)$ зависит только от существования и величины предела 
+	\[
+		\lim\limits_{n \rightarrow \infty} \dfrac{1}{l} \int_{0}^{\delta} \dfrac{f(x_0 + z) + f(x_0 - z) }{2 \sin \left[\dfrac{\pi z}{2l} \right]} \sin \left[\dfrac{\pi}{l}(n+1/2)z \right]dz
+	\]
+	То есть от значений функции $ f $ на интервале $ (x_0 - \delta, x_0 + \delta) $
+\end{greyEmpty}

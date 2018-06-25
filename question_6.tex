@@ -1,0 +1,60 @@
+\section{Равномерная сходимость сумм Фейера для непрерывной функции.}
+\textbf{\large Сумма и ядро Фейера.}
+\begin{greyDefinition}
+	$ f  $ --- $ 2l $--периодическая и непрерывная на всей $ \mathbb{R} $, тогда сумма 
+	\[
+		\sigma_n(x) = \dfrac{S_0^f(x) + S_1^f(x) + \ldots + S_n^f (x) }{n+1} 
+	\]
+	называется \textbf{суммой Фейера}
+	\[
+		S_n^f(x) = \dfrac{1}{l} \int_{-l}^{l} f(x+z)D_n(\dfrac{\pi}{l}z)dz;\; \sigma_n(x) = \dfrac{1}{l} \int_{-l}^{l} f(x+z)F_n(z)dz
+	\]
+	\[
+		F_n(z) = \dfrac{D_0(\frac{\pi}{l}z) + D_z(\frac{\pi}{l}z) + \ldots + D_n(\frac{\pi}{l}z)}{n+1} \text{ --- ядро Фейера}
+	\]
+\end{greyDefinition}
+\begin{greyDefinition}
+	Свойства ядра Фейера:\begin{enumerate}
+		\item $ F_n $ --- $ 2l $--периодическая, четная и непрерывная на $ \mathbb{R} $ функция.
+		\item $ \dfrac{1}{l} \int_{-l}^{l} F_n(z)dz = 1 $, т.к. $ \int_{0}^{l} D(\dfrac{\pi}{l}y)dy = l/2 $
+		\item $ F_n(z) \geqslant 0 \forall z \in \mathbb{R} \left\{ F_n(u) = \dfrac{1}{2(n+1)} \left( \dfrac{\sin (n+1)\frac{\pi}{2l}u}{\sin \frac{\pi}{2l}u} \right)^2 \right\}$
+		\item $ \forall \delta \in (0,l) \rightarrow \lim\limits_{n \rightarrow \infty} \max_{[\delta,l]} F_n(z) = 0;\;$ 
+		
+		$ \max F_n(z) \leqslant \dfrac{1}{2(n+1)\sin\frac{\pi}{2l}\delta} \underset{n \rightarrow\infty}{\longrightarrow}0$
+	\end{enumerate}
+\end{greyDefinition}
+\begin{greyTheorem}
+	Последовательность $ \left\{ \sigma_n(x) \right\}_{n=0}^\infty $ сумм Фейера $ 2l $--периодической и непрерывной на $ \mathbb{R} $ функции $ f $ сходится равномерно на $ \mathbb{R} $ к функции $ f $
+\end{greyTheorem}
+\begin{greyProof}
+	\begin{enumerate}
+		\item Докажем что $ f $ --- равномерно непрерывна на $ \mathbb{R} ;$ на $ [-2l,2l] $ функция $ f $ равномерно непрерывная по т. Кантора, т.е.\[
+			\forall \varepsilon>0 \exists \delta >0: \forall x', x'' \in [-2l,2l]: |x'-x''| < \delta \mapsto |f(x') - f(x'')| < \varepsilon
+		\]
+		Возьмем произвольные любые $ \xi, \eta: |\xi - \eta| < \delta < l,\; x' \in [-l,l] $, тогда 
+		\begin{multline*}
+			\exists k: \xi = x' + 2kl, \eta = x'' + 2kl \Rightarrow |\xi - \eta| = |x' - x''|  < \delta \Rightarrow \\ \Rightarrow |f(\xi) - f(\eta)| = |f(x') - f(x'')| < \varepsilon
+		\end{multline*}
+		Условие равномерной непрерывности: $$ \forall \varepsilon > 0 \exists \delta = \delta(\varepsilon): \forall x \in \mathbb{R} \,\&\, \forall z: |z|<\delta \mapsto |f(x+z) - f(x)| < \frac{\varepsilon}{2} \Rightarrow  $$ $ \Rightarrow f $ --- равномерно непрерывна на $ \mathbb{R} $
+		\[
+			|\sigma_n(x) - f(x)| = |\frac{1}{l} \int_{-l}^l (f(x+z) - f(x)) F_n(z)dz| \leqslant \frac{1}{l} \int_{-l}^{l} |f(x+z)-f(x)| F_n(z)dz
+		\]
+		\[
+			\frac{1}{l}\int_{-\delta}^{\delta} |f(x+z)-f(x)|F_n(z)dz \leqslant \frac{\varepsilon}{2}\frac{1}{l} \int_{-\delta}^\delta F_n(z)dz 
+		\]
+		По свойству $ \dfrac{1}{l} \int_{-l}^l F_n(z) dz = 1 $ и $ F_n(z) >0 \; \forall z \in \mathbb{R} \Rightarrow  \dfrac{1}{l}\int_{-a}^a F_n(z)dz < 1 \;\forall a<l $
+		\[
+			\Rightarrow \frac{\varepsilon}{2}\frac{1}{l} \int_{-\delta}^\delta F_n(z)dz < \frac{\varepsilon}{2}
+		\]
+		Введем $ M = \max_{[-l,l]} |f(x)|;\; \forall \varepsilon>0 \exists N=N(\varepsilon): \forall n \geqslant N \mapsto \max_{[-\delta,l]} F_n(z) \leqslant \dfrac{\varepsilon}{8M} $
+		\[
+			\frac{1}{l}\int_{\delta}^l |f(x+z)-f(x)|F_n(z) dz \leqslant \frac{1}{l}2M\frac{\varepsilon}{8M} (l-\delta) < \frac{\varepsilon}{4}
+		\]
+		\item Аналогично, $ \frac{1}{l}\int_{-l}^{\delta} |f(x+z)-f(x)|F_n(z)dz < \frac{\varepsilon}{4}$
+
+		\item Тогда $ \abs{\sigma_n(x)-f(x)} = \frac{1}{l}\abs{\int_{-\delta}^\delta + \int_{\delta}^l + \int_{-l}^{-\delta}} < \frac{\varepsilon}{2} + \frac{\varepsilon}{4} + \frac{\varepsilon}{4} = \varepsilon$, т.е. 
+		\[
+			\forall \varepsilon > 0 \exists N(\varepsilon): \forall n \geqslant N \,\&\, \forall x \in \mathbb{R} \rightarrow |\sigma_n(x) - f(x)| < \varepsilon \Leftrightarrow \sigma_n(x) \tmb{x\in\mathbb{R}}{\rightrightarrows}{n \rightarrow\infty}f(x)
+		\]
+	\end{enumerate}
+\end{greyProof}

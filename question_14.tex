@@ -1,0 +1,98 @@
+\section{Непрерывность, интегрируемость и дифференцируемость собственных интегралов, зависящих от параметра.}
+
+\textbf{Начальные условия.} $ \prod = \{ (x,y) \in \mathbb{E}^2: a \leqslant x \leqslant b,\; c \leqslant y \leqslant d \} = [a,b]\times[c,d] $
+
+$ w = f(x,y) $, при каждом фиксированном $  y \in [c,d] $, функция $ w = f(x,y) $ интегрируема на $ [a,b] $ 
+
+$ \forall y \in [c,d]\; J = J(y) = \int_{a}^{b} f(x,y)dx$ --- интеграл зависящий от параметра.
+\begin{greyTheorem}
+	Если $ w = f(x,y) $ непрерывна на $ \Pi $, то функция $ J=J(y) $ непрерывна на $ [c,d] $
+\end{greyTheorem}
+\begin{greyProof}
+	$ \Pi $ --- компакт, $ w = f(x,y) $ непрерывна на $ \Pi $, следовательно можем воспользоваться Т. Кантора: \[
+	\forall\varepsilon> 0 \exists 
+	\delta=\delta(\varepsilon)>0: \forall (x,y) \in \Pi : y+ \Delta y \in [c,d] \& |\Delta y| < \delta \mapsto |f(x,y+ \Delta y) - f(x,y)| <\dfrac{\varepsilon}{b-a}
+	\]
+	Рассмотрим приращение функции $ \mathcal{J},\; \forall y \in [c,d] $:
+	\begin{multline*}
+	\abs{\Delta \mathcal{J}(y, \Delta y)} = \abs{ \mathcal{J}(y+\Delta y)-\mathcal{J}(y)} = \abs{\int_{a}^{b}\left[ f(x,y+\Delta y) - f(x,y) \right]dx} \leqslant \\ \leqslant \int_{a}^{b}\abs{f(x,y+\Delta y) - f(x,y)} dx <\dfrac{\varepsilon}{b-a} \int_{a}^{b} dx = \varepsilon
+	\end{multline*}
+	$ \Rightarrow \mathcal{J} $ непрерывна на $ [c,d] $
+\end{greyProof}
+\begin{greyTheorem}
+	Если $ w = f(x,y) $ непрерывна на $ \Pi $, то $ \mathcal{J}=\mathcal{J}(y) $ непрерывна на $ [c,d] $ и $ \forall y_o \in [c,d] $ выполняется \[
+	\int_{c}^{y_0} \mathcal{J}(y)dy = \int_{c}^{y_0} \left[ \int_{a}^{b} а(x,y)dx \right] dy = \int_{a}^{b} \left[ \int_{c}^{y_0} f(x,y) dy \right] dx
+	\]
+\end{greyTheorem}
+\begin{greyProof}
+	Из т. 14.1 следует, что $ \mathcal{J} = \mathcal{J}_y $ интегрируема на $ [c,d] $. По теореме о сведении кратного интеграла к повторному: 
+	каждый из повторных интегралов существует и равен двойному интегралу:
+	\[
+	\iint_{\Pi_0} f(x,y) dxdy\text{, где } \Pi_0 = [a,b] \times [c,d]
+	\]
+\end{greyProof}
+\begin{greyTheorem}
+	Если функция $ w = f(x,y) $ и $ w = \Pdd{f}{y}(x,y) $ непрерывна на $ \Pi $, то $ \mathcal{J} = \mathcal{J}(y) $ дифференцируема на $ [c,d] $ и \[
+	\mathcal{J}'(y) = \int_{a}^{b} \Pdd{f}{y}(x,y)dx
+	\]
+\end{greyTheorem}
+\begin{greyProof}
+	По условию $ w = \Pdd{f}{y}(x,y) $ непрерывна на $ \Pi $ введем функцию $ g(y) = \int_{a}^{b} \Pdd{f}{y}(x,y)dx$ --- непрерывна на $[c,d]$ по т. 14.1 	и интегрируема на $ [c,d] $ по теореме 14.2, следовательно 
+	\[
+	\forall y \in [c,d] \mapsto \int_{y}^{c} g(y)dy = \int_{a}^{b} \left[ \int_{c}^{y} \Pdd{f}{y}(x,y)dx \right] dy = \int_{a}^{b}\left[ f(x,y) - f(x,c) \right] dx = \mathcal{J}(y) - \mathcal{J}(c)
+	\]
+	\[
+	\mathcal{J}(y) = \int_{c}^{y} g(y)dy + \mathcal{J}(c)
+	\]
+	Из непрерывности и интегрируемости $ g(y) $, следует дифференцируемость $ \mathcal{J} $ на $ [c,d] $, значит, $  $
+	\[
+	\mathcal{J}'(y) = g(y) = \int_{a}^{b} \Pdd{f}{y} dx
+	\]
+\end{greyProof}
+%\subsubsection{Интегралы с переменными границами}
+%Область $ D $ элементарна относительно Ox: $ \overline{D} = \{ (x,y): a(y)\leqslant x\leqslant b(y),\; y \in [c,d] \} $
+%
+%Предположим, что $ \forall y \in [c,d] $ функция $ w = f(x,y) $ интегрируема на $ [a(y),b(y)] $, тогда для любого $ y $ определена функция \[
+%\mathcal{J} = \mathcal{J}(y) = \int_{a(y)}^{b(y)} f(x,y)dx
+%\]
+%\begin{theorem}
+%	Если функция $ w = f(x,y) $ непрерывна в $ \overline{D} $, а функции $ a = a(y) $ и $ b = b(y) $ непрерывны на $ [c,d] $, то функция $ \mathcal{J} = \mathcal{J}(y) $ непрерывна на $ [c,d] $
+%\end{theorem}
+%\begin{proof}
+%	Фиксируем точку $ y_0 \in [c,d] $, тогда используя свойство аддитивности определенного интеграла можем записать \[
+%	\mathcal{J}(y) = \int_{a(y_0}^{b(y_0)}f(x,y)dx + \int_{b(y_0)}^{b(y)}f(x,y)dx - \int_{a(y_0)}^{a(y)} f(x,y)dx = \mathcal{J}_0 + \mathcal{J}_b - \mathcal{J}_a
+%	\]
+%	$ \mathcal{J}_0 $ непрерывна на $ [c,d] $ по т. 2.1.1. 
+%	\[
+%	\mathcal{J}_0(y) \underset{y \rightarrow y_0}{=} \mathcal{J}_0 (y_0) = \int_{a(y_0)}^{b(y_0)} = \mathcal{J}(y_0)
+%	\]
+%	$ \max |f(x,y) | = m,\; \forall x,y \in \overline{D} $
+%	\[
+%	\abs{\mathcal{J}_0(y)} = \abs{ \int_{a(y)}^{b(y)} f(x,y) dx} \leqslant M \abs{b(y) - b(y_0)} \underset{y \rightarrow y_0}{\longrightarrow} 0 
+%	\]
+%	для $ \mathcal{J}_a(y) $ аналогично
+%\end{proof}
+%\begin{theorem}
+%	Пусть $ w = f(x,y) $ и $ w = \Pdd{f}{y}(x,y) $ непрерывны в $ \overline{D} $, а функции $ a = a(y) $  и $ b = b(y) $ дифференцируемы на $ [c,d] $, тогда $ \mathcal{J} = \mathcal{J}_y $ дифференцируема на $ [c,d] $ и справедлива формула \[
+%	\mathcal{J}'(y) = \int_{a(y)}^{b(y)} \Pdd{f}{y}(x,y)dx + f(b(y),y)b'(y) - f(a(y),y)a'(y)
+%	\]
+%	По т. 2.1.3 $ \mathcal{J}_0 $ дифференцируема на $ [c,d] $, тогда 
+%	\[
+%	\mathcal{J}'_0(y) = \int_{a(y_0)}^{b(y_0)} \Pdd{f}{y} (x,y)dx
+%	\]
+%	\[
+%	\mathcal{J}_b(y_0) = \mathcal{J}_a(y_0) = 0 
+%	\]
+%	\[
+%	\mathcal{J}'_b(y_0) = \lim\limits_{y \rightarrow y_0}  \dfrac{\int_{b(y_0)}^{b(y)} f(x,y)dx}{y - y_0} 
+%	\]
+%	по интегральной теореме о среднем $ \exists \overline{x} \in (b(y_0),b(y) $:
+%	\[
+%	\lim\limits_{y\rightarrow y_0}	f(\overline{x},y) \dfrac{b(y) - b(y_0)}{y - y_0}
+%	\] 
+%	при $ y \rightarrow y_0 \; \overline{x} \rightarrow y_0$, тогда выражение выше равно 
+%	\[
+%	f(b(y_0),y_0) b'(y_0)
+%	\]
+%	Аналогично для $ \mathcal{J}_a(y_0) $
+%\end{theorem}

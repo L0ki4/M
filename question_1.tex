@@ -1,0 +1,106 @@
+\section{Теорема Римана. Стремление к нулю коэффициентов Фурье.} 
+%\subsection{Пространства интегрируемых функций.}
+$ X = \{a,b\}: [a,b],(a,b),[a,b), (a,b] $, может быть $ a = - \infty,\; b = +\infty $, $ X $ --- промежуток.
+\begin{greyDefinition}Функция $ y = f(x) $ называется абсолютно интегрируемой на промежутке $ X $, если $ \int_X \abs{f}dx $ сходится.
+\end{greyDefinition}
+
+\begin{greySmth}{Обозначения.} Совокупность абсолютно интегрируемых функций обозначается $ L^1_R(X) $
+\end{greySmth}
+\paragraph{Замечание} Если $ f $ интегрируема на $ [a,b] $, то $ \abs{f} $ --- интегрируема на $ [a,b] $. В обратную сторону утверждение неверно, пример функция Дирихле не интегрируема в общем случае, но интегрируема по модулю.
+$$ {\widetilde{\mathcal{D}}(x)} = \begin{cases}
+1&, x \in \mathbb{Q}\\ -1&, x \in \mathbb{J}
+\end{cases} $$ 
+\paragraph{Замечание.} На $ L^1_R(X) $ можно определить операции сложения функций и умножения функции на действительное число. Тем самым $ L_R^1(X) $ превращается в линейное пространство.
+\begin{greyDefinition} Функция $ f \in L^1_R(X) $ называется абсолютно интегрируемой с квадратом, если $ \int_X \abs{f}^2dx $ сходится. Множество таких функций обозначают $ L^2_R(X) $ $$ \abs{f}^2 \in L^1_R(X) \Rightarrow f \in L^2_R(X)$$ 
+* -- $ f: X\rightarrow \mathbb{R} \Rightarrow \abs{f}^2 = f^2 $\newline
+НО $ f: X \rightarrow \mathbb{C} \Rightarrow \abs{f}^2 \neq f^2 $ 
+\end{greyDefinition}
+
+\paragraph{Пример.} $ f(x) = \frac{1}{\sqrt{x}}, \; X = (0,1],\; f \in L^1_R(X),\; f^2 \notin L^1_R(X) $
+\paragraph{Предложение.} $ L^2_R(X) $ --- линейное пространство.
+
+\paragraph{Определение.} Линейное пространство $ L $ называется нормированным пространством, если на $ L $ введена функция $ ||\cdot|| $ называемая нормой, обладающая следующими свойствами $ (\forall x,y \in L\; \& \forall \alpha \in \mathbb{R}) $
+\begin{enumerate}
+	\item $ ||x+y|| \leqslant ||x|| + ||y|| $
+	\item $ ||\alpha x|| = |\alpha| ||x|| $
+	\item $ ||x|| \geqslant0,\; ||x|| =0 \Leftrightarrow x = 0 $
+\end{enumerate}
+
+\begin{greyTheorem}
+	\textbf{Теорема Римана об осцилляции}. Если $ f(x) $ абсолютно интегрируемая на конечном или бесконечном интервале $ (a,b) $: $ f \in L_R^1(X),\; X =\{ a,b \} $, то справедливо следующее равенство\[
+	\lim\limits_{t\rightarrow\infty} \int_{a}^b f(x)\sin t xdx = 0;
+	\]
+	\[
+	\lim\limits_{t\rightarrow\infty} \int_{a}^b f(x)\cos txdx = 0
+	\]
+\end{greyTheorem}
+\begin{greyProof}
+	\textit{Первый случай.} $ f $ --- интегрируемая на $ [a,b] $ функция. Критерий интегрируемости:
+	\[
+	\forall \varepsilon>0\, \exists T=\{ a = x_0<x_1<\ldots < x_k=b \}: \overline{S}_T-\underline{S}_T < \varepsilon/2
+	\]
+	Возьмем $ m_i=\inf_{[x_{i-1},x_i]} f,\; M_i=\sup_{[x_{i-1},x_i]} f,\; M=\sup_{[a,b]} |f| $.
+	\begin{multline*}
+	\left|\int_{a}^b f(x)\sin t xdx \right|= \left|\sum_{i=1}^{k} \int_{x_{i-1}}^{x_i}(f(x)-m_i)\sin t x dx + \sum_{i=1}^{k} m_i \int_{x_{i-1}}^{x_i} \sin t x dx\right|\leqslant\\\leqslant \sum_{i=1}^k (M_i-m_i)\Delta x_i + \sum_{i=1}^k \dfrac{m_i}{|t|}|\cos tx_{i-1} -\cos t x_i| \leqslant \\ \leqslant \sum_{i=1}^k (M_i - m_i) \Delta x_i + 2k\dfrac{M}{|t|} <  \varepsilon/2 + 2k\dfrac{M}{|t|}
+	\end{multline*}
+	Так как числа $ M \text{ и } k $ фиксированы, то
+	\[
+	\forall \varepsilon>0\,	 \exists t_0 > 0 : \forall t: |t|>t_0 \mapsto 2kM/|t|<\varepsilon/2 \mapsto \left|\int_{a}^b f(x)\sin t xdx \right| < \varepsilon,
+	\]
+	то есть $ \lim\limits_{t\rightarrow\infty} \int_a^b f(x)\sin tx dx = 0 $
+	
+	\textit{Второй случай.} $ X = [a,b),\,f  $ имеет особенность в точке $ b $.
+	\[
+	|f(x)\sin tx| \leqslant |f(x)| \Rightarrow f(x)\sin tx \in L_R^1(X) \Rightarrow\]
+	Критерий Коши:
+	\[	
+	\forall \varepsilon>0 \exists \delta=\delta(\varepsilon) \in (0,b-a):\; \left|\int_{b-\delta}^{b} f(x)\sin t x dx \right| <\varepsilon/2
+	\]
+\end{greyProof}
+\begin{greyEmpty}
+	$ f $ интегрируема на $ [a,b-\delta] \Rightarrow$ из п. 1 $ \exists t_0>0: \forall t: |t| > t_0 \mapsto \left|\int_{a}^{b-\delta} f(x)\sin t x dx \right| <\varepsilon/2$
+	 Поэтому при $ |t| > t_0 \mapsto  $
+	\begin{multline*}
+	\mapsto \abs{\int_{a}^{b} f(x) \sin tx dx } = \abs{\int_{a}^{b-\delta} f(x) \sin tx dx + \int_{b-\delta}^{b} f(x) \sin tx dx} \leqslant \abs{\int_{a}^{b-\delta} f(x) \sin tx dx} +\\+ \int_{b-\delta}^{b} |f(x)| \sin tx dx < \varepsilon/2 + \varepsilon/2 = \varepsilon
+	\end{multline*}
+	Итак, $ \lim\limits_{t \rightarrow \infty} \int_{a}^{b} f(x) \sin tx dx = 0$
+\end{greyEmpty}
+Косинус доказывается аналогично.
+\begin{greyTheorem}
+	Если $ f \in L_R^1(X),\; X =\{ -a,a \} $, четная на $ X $, то \[
+	\int_{-a}^{a} f(x)dx = 2 \int_{0}^{a} f(x)dx
+	\]
+	Если $ f $ нечетная на $ X $, то \[
+	\int_{-a}^a f(x)dx = 0
+	\]
+\end{greyTheorem}
+%не доказано
+\begin{greyTheorem}
+	Если $ f \in L_R^1(X), X = \{ 0,T \} $, и периодическая с периодом $ T $ продолжена на $ \mathbb{R} $, то $ f$ абсолютно интегрируема на любом отрезке конечной длины и $ \forall a \in \mathbb{R} $\[ \int_{a}^{a+T} f(x)dx = \int_{0}^T f(x)dx \]
+\end{greyTheorem}
+%не доказано
+
+\textbf{Тригонометрические ряды Фурье.}
+
+\begin{greySmth}{Замечание.}
+	В теории тригонометрических рядов Фурье принята запись
+	\[
+	a_0 = \dfrac{1}{l} \int_{-l}^l f(x)dx,\; a_k =\dfrac{1}{l} \int_{-l}^lf(x) \cos\dfrac{k\pi x}{l},\; b_k=\dfrac{1}{l} \int_{-l}^l f(x) \sin \dfrac{k \pi x}{l}
+	\]
+\[
+\frac{a_0}{2} + \sum_{k=1}^\infty a_k\cos \dfrac{k\pi x}{l} + b_k \sin \dfrac{k\pi x}{l} \sim f(x) \text{ --- Ряд Фурье}
+\]
+\end{greySmth}
+
+\begin{greySmth}{Замечание 1.}
+	Так как 
+	$
+	\left|f(x) \cos \dfrac{k \pi x}{l} \right| \leqslant |f(x)| \& \left|f(x)\sin \dfrac{k\pi x}{l}\right| \leqslant |f(x)| \Rightarrow$  несобственные интегралы, задающие  $a_k$ \text{ и } $b_k$ \text{ сходятся}.
+\end{greySmth}
+
+\begin{greySmth}{Замечание 2.}
+	Из т. Римана об осцилляции следует, что $ a_k \rightarrow 0,\; b_k \rightarrow 0,\text{ при } k \rightarrow \infty $
+\end{greySmth}
+
+
+\paragraph{Замечание 3.} Функцию $ f \in  \mathcal{L}_R^2[-l,l]$ периодически с периодом $ 2l $ продолжим на $ \mathbb{R} $. По теореме об интеграле периодической функции продолженная функция будет абсолютно интегрируема на любом конечном интервале. Если $ f $ непрерывна на $ [-l,l] $ и $ f(-l+0)=f(l-0) $, то продолженная функция будет непрерывна на всей числовой оси. Если эти пределы не совпадают, то в т. $ (2m+1)l,\; m\in \mathbb{Z} $ --- точка разрыва 1-го рода со скачком $ f(-l+0)-f(l-0) $

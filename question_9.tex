@@ -1,0 +1,110 @@
+\section{Полнота ортогональной системы функций, ортогональный базис и равенство Парсеваля.}
+\textit{* --- это небольшой билет, просто много текста для понимания:)}
+
+Метрическое пространство $ \mathcal{M} = (\mathcal{L}, \rho) $ --- полное, если $ \forall \{ y_n \}^\infty_{n=1}  $ --- фундаментальная последовательность, сходится.
+
+$ \mathcal{N} =  (\mathcal{L}, ||\cdot||) $--- полное, если $ \forall \{ y_n \}^\infty_{n=1} $ --- фундаментальная последовательность сходится. $ \rho(x,y) = ||x - y|| $
+
+\begin{greyDefinition} Полное линейное нормированное пространство называется банаховым. Полное предгильбертово пространство называется гильбертовым пространством. 
+\end{greyDefinition}
+$ \mathcal{E} = (\mathcal{L}, (\cdot,\cdot)) $ --- предгильбертово, а $ \mathcal{L}  $ --- бесконечномерное.
+\begin{greyDefinition}
+$ \mathcal{L}' \subset \mathcal{L},\; \mathcal{N} = (\mathcal{L}, ||\cdot||) $ --- банахово пространство. $ \mathcal{N}' = (\mathcal{L}', ||\cdot||)$ называется \textbf{подпространством} пространства $ \mathcal{N} $, если $ \mathcal{N}' $ --- банахово.
+\end{greyDefinition}
+\paragraph{Определение.} Норма $ ||\cdot||_2$ на линейном пространстве $ \mathcal{L} $ не слабее нормы $ ||\cdot||_1 $ на этом пространстве, если 
+\[
+\exists C>0:\forall x\in \mathcal{L} \mapsto ||x||_1 \leqslant C\cdot ||x||_2
+\]
+Нормы $ ||\cdot||_1 $ и $ ||\cdot||_2 $ на $ \mathcal{L} $ эквивалентны, если \[
+\exists C_1 > 0 \& \exists C_2>0: \forall x \in \mathcal{L} \mapsto C_1||x||_2 \leqslant ||x||_1 \leqslant C_2||x||_2
+\]
+\begin{greyDefinition}
+$ \mathcal{L} = \mathcal{C} [a,b] $ --- пространство функций непрерывных на $ [a,b] $
+\begin{enumerate}
+	\item $ ||f||_c = \max |f(x)|,\; C[a,b] = (\mathcal{C}[a,b], ||\cdot||_c) $ сходимость в $ C[a,b] $ равномерная.
+	\item $ ||f||_1 = \int_{a}^{b}|f(x)|dx,\; L_c^1[a,b] =(\mathcal{C}[a,b], ||\cdot||_1) $ сходимость в $ L_c^1[a,b] $ --- сходится в среднем.
+	\item $ ||f||_2 = \sqrt{\int_{a}^{b}f^2(x)dx},\; L_C^2[a,b] = (\mathcal{C}[a,b], ||\cdot||_2) $ --- сходимость в среднем квадратичном.
+\end{enumerate}
+\end{greyDefinition}
+\newpage
+\paragraph{Предложение.} Для норм, введенных на линейном пространстве $ \mathcal{C}[a,b] $ справедливо:
+\begin{enumerate}
+	\item $  ||\cdot||_C $ не слабее норм $ ||\cdot||_1  $ и $ ||\cdot||_2 $
+	\item $ ||\cdot||_2 $ не слабее нормы $ ||\cdot||_1 $
+\end{enumerate}
+\begin{proof}
+	Пункт первый:
+	\[
+	||f||_1 = \int_{a}^{b} |f(x)|dx \leqslant ||f||_C\int_{a}^{b}dx = (b-a)||f||_C
+	\]
+	\[
+	||f||_2 = \sqrt{\int_{a}^{b}(f(x))^2dx}\leqslant\sqrt{||f||_c^2 \int_{a}^{b}dx}=\sqrt{b-a}||f||_C
+	\]
+	Пункт второй:
+	\[
+	||f||_1 = \int_{a}^{b}|f(x)|dx\leqslant\sqrt{\int_{a}^{b}(f(x))^2dx}\sqrt{\int_{a}^{b}dx} = \sqrt{b-a}||f||_2
+	\]
+\end{proof}
+\paragraph{Пример.}
+$ \tilde{\mathcal{C}}[a,b] = \{ f\in\mathcal{C}[a,b]:f(a)=f(b) \} $
+
+$ \tilde{C}[a,b] = (\tilde{\mathcal{C}}[a,b], ||\cdot||_C) $ --- подпространство $ C[a,b] $
+\begin{greyDefinition} Счетная система  $ \Phi = \{ \varphi_i\}^\infty_{i=1} $, элементов нормированного пространства $ \mathcal{N} = (\mathcal{L},||\cdot||)  $ называется \textbf{полной}, если 
+\[
+	\forall f \in \mathcal{N}\; \& \;\forall \varepsilon>0\; \exists\alpha_1,\ldots,\alpha_n \in \mathbb{R}: ||f-\sum_{k=1}^n \alpha_k\varphi_k || <\varepsilon
+\]
+\end{greyDefinition}
+\begin{greyTheorem}
+	Пусть в предгильбертовом пространстве $ \mathcal{E} $ задана счетная ортнормированная система $ \Phi = \{ \varphi_k \}^\infty_{k=1} $. Ряд Фурье элемента $ f $ из $ \mathcal{E} $ по системе $ \Phi $ сходится к $ f $ тогда и только тогда, когда $ ||f||^2 = \sum_{k=1}^\infty f_k^2,\; f_k = (f,\varphi_k) $ --- \textbf{равенство Парсеваля}.
+\end{greyTheorem}
+\begin{greyProof}
+	Необходимость\[
+		\sum_{k=1}^\infty f_k\varphi_k \text{ сходится к } f \Leftrightarrow \forall \varepsilon>0 \exists N=N(\varepsilon): \forall n \geqslant N \mapsto ||f-\sum_{k=1}^n f_k\varphi_k || < \sqrt{\varepsilon}
+	\]
+	Из тождества Бесселя:
+		\[
+	||f||^2 - \sum_{k=1}^n f_k^2 = ||f-\sum_{k=1}^n f_k\varphi_k||^2<\varepsilon \Leftrightarrow \sum_{k=1}^nf_k^2 = ||f||^2
+	\]
+\end{greyProof}
+\begin{greyEmpty}
+		Достаточность. Дано равенство Парсеваля:
+	\[
+	\forall \varepsilon>0 \exists N = N(\varepsilon): \forall n \geqslant N \mapsto ||f||^2 - \sum_{k=1}^n f_k^2 < \varepsilon
+	\]
+	применение тождества Бесселя заканчивает доказательство.
+\end{greyEmpty}
+\begin{greyDefinition} Счетная ортонормированная система $ \Phi = \{ \varphi_k\}^\infty_{k=1} $, элементарного предгильбертового пространства $ \mathcal{E} $ называется \textbf{ортонормированным базисом}, если любой элемент $ f $ этого пространства является суммой своего ряда Фурье.
+\end{greyDefinition}
+%13.03.2018
+\begin{greyTheorem}
+	Для счетной ортонормированной системы $ \Phi $ в предгильбертовом пространстве $ \mathcal{E} $ эквивалентны следующие условия:
+	\begin{enumerate}
+		\item $ \Phi $ --- полная система в $ \mathcal{E} $
+		\item $ \Phi $ --- ортонормированный базис пространства $ \mathcal{E} $
+		\item $ \forall f \in \mathcal{E} \mapsto ||f||^2 = \sum_{k=1}^\infty f_k^2,\; f_k = (f,\varphi_k)$ (Равенство Парсеваля)
+ 	\end{enumerate}
+\end{greyTheorem}
+\begin{greyProof}
+	2) $ \Leftrightarrow $ 3) следует из теоремы 9.1.
+	
+	1) $ \Rightarrow $ 2): $\left[  \Phi \text{ --- полная} \right]$ $ \overset{def}{=\!\!=\!\!=} \left[ \forall \varepsilon >0 \;\&\; \forall f \in \mathcal{E}\; \exists \alpha_1,\ldots, \alpha_n: ||f-\sum_{k=1}^n \alpha_k \varphi_k || < \varepsilon \right] $
+	
+	Из теоремы 8.1:
+	\[
+		||f - \sum_{k=1}^n f_k\varphi_k || \leqslant ||f - \sum_{k=1}^n \alpha_k \varphi_k|| <\varepsilon
+	\]
+	Используя тождество Бесселя
+	\[
+		||f - S_{n_0}^f|| = ||f||^2 - \sum_{k=1}^{n_0}f_k^2\text{ --- убывающая последовательность}
+	\]
+	Значит $ \{ f - S_n^f \}  $ --- убывающая $ \Rightarrow \forall n \geqslant  n_0 \mapsto ||f - S_n^f || \leqslant \varepsilon$ 
+	\[
+		\forall \varepsilon > 0 \exists n_0: \forall n \geqslant n_0 \mapsto ||f - S_n^f || < \varepsilon
+	 \Leftrightarrow \lim\limits_{n \rightarrow \infty} S_n^f = f  \text{ (по норме)}
+	\]
+	2) $ \Rightarrow  $ 1) \big[ Ф --- ОНБ в $ \mathcal{E} $ \big] $ = \left[ \underline{\forall f \in \mathcal{E}} \mapsto f = \sum_{k=1}^n f_k \varphi_k \right] $
+	\[
+		\underline{\forall \varepsilon > 0} \; \exists n_0: \forall n \geqslant n_0 \mapsto \underline{||f - \sum_{k=1}^n f_k \varphi_k || < \varepsilon} \Rightarrow
+	\]
+	$ \Rightarrow $ то, что подчеркнуто говорит о том, что система $ \Phi $ полна в $ \mathcal{E} $ по определению.
+\end{greyProof}	

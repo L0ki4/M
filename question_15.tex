@@ -1,0 +1,103 @@
+\section{Равномерная сходимость несобственных интегралов, зависящих от параметра. Критерий Коши, признаки Вейерштрасса и Дирихле.}
+
+\textbf{Несобственный интеграл первого рода. Начальные условия.}
+
+%\textbf{В нашем курсе мы не сталкиваемся с интегралами первого рода, так что это просто для справки.}
+$ \Pi - [a, + \infty)\times E $, где $ E \in \mathbb{R}^1 $
+
+$ w = f(x,y)$ при каждом фиксированном $ y \in E $ интегрируема в несобственном смысле на $ [a,+\infty) $\[
+\mathcal{J} = \mathcal{J}_y = \int_{a}^{+ \infty} f(x,y)dx,\; y \in E
+\]
+\begin{greyDefinition} Несобственный интеграл $ \mathcal{J} = \mathcal{J}_y $ сходится равномерно по параметру $ y $ на множестве $ E $, если
+\[
+\forall \varepsilon > 0 \exists A = A (\varepsilon) \geqslant a: \forall R \geqslant A \& \forall y \in E \mapsto \abs{ \int_{R}^{+ \infty} f(x,y) dx} < \varepsilon
+\]
+\textbf{Отрицание:}
+\[
+\exists \varepsilon_0 > 0 : \forall A \geqslant a \exists R_A \geqslant A \& \exists y_a \in E \mapsto \abs{\int_{R_A}^{+\infty}f(x,y_A)}\geqslant \varepsilon_0
+\]
+\end{greyDefinition}
+\textbf{Несобственный интеграл второго рода. Начальные условия.}
+$ \Pi_b = [a,b)\times E, \in \subset \mathbb{R} $
+
+Если $ \forall y \in E $ фиксированная функция $ w = f(x,y) $ интегрируема в несобственном смысле на $ [a,b) $, то на $ E $ определена функция: \[
+\mathcal{J} = \mathcal{J}(y) = \int_{a}^{b} f(x,y)dx
+\]
+\begin{greyDefinition} Несобственный интеграл $ \mathcal{J} = \mathcal{J}(y) $ сходится равномерно по параметру $ y $ на $ E $
+\[
+\forall \varepsilon > 0 \; \exists  \delta=\delta(\varepsilon) > 0 : \forall \eta \in (0,\delta) \;\&\; \forall y \in E \mapsto \abs{\int_{b-\eta}^{b} F(x,y)dx } < \varepsilon
+\]
+\end{greyDefinition}
+\begin{greyTheorem}\textbf{Критерий Коши.}
+	Для равномерной сходимости по параметру $ y $ на множестве $ E $ несобственного интеграла $ \mathcal{J} = \mathcal{J}(y) $ необходимо и достаточно, чтобы выполнялось следующее условие:\begin{multline*}
+	\forall \varepsilon > 0 \exists A = A(\varepsilon) > 0 >\geqslant a: \forall R', R'': R'' > R' \geqslant A \& \forall y \in E \mapsto \\ \mapsto | \int_{ R' }^{ R'' } f(x,y) | < \varepsilon
+	\end{multline*}
+\end{greyTheorem}
+\begin{greyProof}
+	\textit{Необходимость.}
+	
+	Непосредственно следует из определения.
+	\begin{multline*}
+		\forall \varepsilon > 0 \exists A = A((\varepsilon) \geqslant a: \forall R' \geqslant A \und \forall y \in E \mapsto \\ \mapsto \left| \int_{ R' }^\infty f(x,y)dx \right| < \dfrac{\varepsilon}{2},\; \left| \int_{ R''}^\infty f(x,y)dx \right| < \dfrac{\varepsilon}{2}
+	\end{multline*}
+	Так как $ R'' > R' \Rightarrow \left| \int_{ R' }^{R''} f(x,y)dx \right| < \varepsilon$
+	
+	\textit{Достаточность.}
+	\[
+	\forall \varepsilon > 0 \exists A = A(\varepsilon) > 0 >\geqslant a: \forall R', R'': R'' > R' \geqslant A \& \forall y \in E \mapsto | \int_{ R' }^{ R'' } f(x,y) | < \varepsilon
+	\]
+	Тогда по критерию Коши сходимости несобственных интегралов при всех $ y \in E $ интеграл сходится, следовательно устремляя $ R^n \rightarrow \infty $ получаем равномерную сходимость.
+\end{greyProof}
+\begin{greySmth}{Замечание}
+\textbf{Отрицание условия Коши:}\[
+\exists \varepsilon_0 > 0 : \forall A \geqslant a \;\exists R'_A, R''_A: R''_A > R'_A \geqslant A \;\&\; \exists y_A \in E: \abs{ \int_{R'_A}^{R_A''} f(x,y_A)dx} \geqslant \varepsilon_0
+\]
+\end{greySmth}
+\begin{greyTheorem}\textbf{Признак Вейерштрасса.}
+	Функция $ w = f(x,y) $ определена на $ \Pi = [a, +\infty)\times E $, при каждом фиксированном $ y \in E $ функция $ f $ интегрируема на $ [a,R],\;\forall R > a$ и на $ \Pi $ выполнено неравенство $ \abs{f(x,y)} \leqslant g(x) $. Если $ \int_{a}^{+\infty} g(x) dx < \infty$, то несобственный интеграл $ \mathcal{J} = \mathcal{J}(y)  $ сходится равномерно по параметру $ y $ на $ E $
+\end{greyTheorem}
+\begin{greyProof}
+	Из критерия Коши:
+	\[
+	\int_{a}^{+ \infty} g(x)dx < \infty \Leftrightarrow \forall \varepsilon > 0\; \exists A= A(\varepsilon): \forall R', R'': R' > R'' \geqslant A \mapsto \int_{ R' }^{R''} g(x)dx < \varepsilon
+	\] 
+	Тогда $ \forall y \in E $ выполняется 
+	\[
+	\abs{\int_{ R' }^{R''}f(x,y) dx} \leqslant \int_{ R' }^{R''}\abs{f(x,y)}dx \leqslant \int_{ R' }^{R''} g(x)dx < \varepsilon
+	\]
+	Следовательно $ \mathcal{J}=\mathcal{J}(y) $ сходится равномерно по параметру $ y $ на $ E $
+\end{greyProof}	
+\begin{greySmth}{Следствие.} Если функция $ w = \varphi(x,y) $ ограничена на $ \Pi = [a,+\infty)\times E $ и \newline $ \forall y \in E \; \varphi(x,y)$ интегрируема на $ [a,R]\; \forall R\geqslant a $ , а $ \int_{a}^{+\infty} |h(x)|dx < \infty $, то сходится равномерно по параметру $ y $ на $ E $ интеграл $	\int_{a}^{b} \varphi(x,y)h(x)dx
+$
+\end{greySmth}
+\begin{greyProof}
+	\[
+	g(x) = M |h(x)|,\; M = \sup_\Pi \abs{\varphi(x,y)} \Rightarrow \text{ признак Вейрештрасса.}
+	\]
+\end{greyProof}
+\begin{greyTheorem}\textbf{Признак Дирихле.} Пусть $ w = f(x,y) $ непрерывна в $ \Pi_\infty $ и $ \forall x \in [c.d] \; \mathcal{J}(y) = \int_{a}^{+\infty}f(x,y)dx $ сходится и выполнены следующие условия:
+	\begin{enumerate}
+		\item  $ \exists M > 0 : \forall R > a \und \forall y \in [c,d]\; \left|\int_{R}^{\infty} f(x,y)dx \right| \leqslant M $
+		\item $ g = g(x) $ непрерывно дифференцируема, монотонна и $$ g(x) \underset{x \rightarrow +0}{\longrightarrow} 0,$$ 
+		Тогда $ \int_{a}^{b} f(x,y)g(x)dx$  сходится равномерно по параметру $ y $ на $ [c,d] $
+	\end{enumerate}
+\end{greyTheorem}
+\begin{greyProof}
+	Проинтегрируем по частям: $\forall R > a \und \forall y \in [c,d] \mapsto$
+	\[
+		\mapsto \int_{ R}^{+\infty} f(x,y)g(x)dx = F(x,y)g(x) \Big|_{R}^{+\infty} - \int_{ R}^{+\infty} F(x,y)g'(x)dx
+	\]
+\end{greyProof}
+\begin{greyEmpty}
+	Так как $ \forall y \in [c,d] \mapsto \lim\limits_{x \rightarrow + \infty } F(x,y)g(x) = 0 \Rightarrow $
+	\[
+	\Rightarrow \int_R^{+\infty} f(x,y)g(x0dx = - F(R,y)g(R) - \int_{ R}^{+\infty}F(x,y)g'(x)dx;
+	\]
+	По условию $ g'(x) \leqslant 0 \und \lim\limits_{x \rightarrow + \infty } g(x) = 0 \Rightarrow g(R) \geqslant 0$ и опять же по условию $ \abs{\int_{ R}^{+\infty}f(x,y)dx} \leqslant M \Rightarrow $
+	\[
+		\abs{\int_{ R}^{+\infty} f(x,y)g(x)dx} \leqslant Mg(R) - M \int_{ R}^{+\infty} g'(x)dx = 2Mg(R) = 2M \abs{g(R)}
+	\] 
+\end{greyEmpty}
+\begin{greyTheorem}\textbf{Признак Дини.}
+	Пусть функция $ w = f(x,y) $ непрерывна на $ \Pi_\infty $, неотрицательна на нем и $ \forall y \in [c,d] $ интеграл $ \mathcal{J}(y)  $ сходится и функция $ \mathcal{J}(y) $ непрерывна на $ [c,d] $, тогда $ \mathcal{J}(y) $ сходится равномерно по параметру $ y $ на $ [c,d] $.
+\end{greyTheorem}

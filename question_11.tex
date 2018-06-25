@@ -1,0 +1,36 @@
+\section{Теорема Рисса-Фишера}
+\begin{greyTheorem}\textbf{Рисса-Фишера.}
+	Пусть в гильбертовом пространстве  $ \mathcal{H} $ задана счетная ортонормированная система элементов $ \Phi = \{ \varphi_k \}_{k=1}^\infty $ и последовательность чисел $ \{ \alpha_k \}_{k=1}^\infty $ такова, что $ \sum_{k=1}^\infty \alpha_k^2 < \infty $, тогда $ \exists f \in \mathcal{H}: $
+	\begin{enumerate}
+		\item $ \alpha_k = (f,\varphi_k),\; k = 1,2,\ldots $ --- коэффициенты Фурье по системе $ \Phi $
+		\item $ f = \sum_{k=1}^\infty \alpha_k \varphi_k $ ($ f $ сходится к ряду Фурье по норме)
+		\item $ \sum_{k=1}^\infty \alpha_k^2 = ||f||^2 $
+	\end{enumerate}
+\end{greyTheorem}
+\begin{greyProof}
+	Условие 2: рассмотрим суммы $ S_n = \sum_{k=1}^n \alpha_k \varphi_k $
+	\begin{multline*}
+		|| S_{n+p} - S_n ||^2 = ||\sum_{k=1}^{n+p}\alpha_k\varphi_k - \sum_{k=1}^n \alpha_k \varphi_k ||^2= || \sum_{k=n+1}^{n+p} \alpha_k \varphi_k ||^2 =\\= \left(\sum_{k=n+1}^{n+p} \alpha_k \varphi_k, \sum_{k=n+1}^{n+p} \alpha_k \varphi_k\right) = \sum_{k=n+1}^{n+p}\alpha_k ^2
+	\end{multline*}
+	По условию:
+	\[
+		\sum_{k=1}^\infty \alpha_k^2 < \infty \overset{\text{кр. Коши}}{\Leftrightarrow} \forall \varepsilon>0 \;\exists N=N(\varepsilon): \forall n\geqslant N\; \&\; \forall p \in \mathbb{N} 	\mapsto \sum_{k=n+1}^{n+p}\alpha_k^2 < \varepsilon^2
+	\]
+	\[
+		||S_{n+p} - S_n || <\varepsilon \Leftrightarrow \{ S_n \}\text{ --- фундаментальная}
+	\]
+	\[
+		\Rightarrow \exists f \in \mathcal{H}: f = \sum_{k=1}^\infty \alpha_k \varphi_k \text{ (по норме)}
+	\]
+	Условие 1: Рассмотрим $ (f,\varphi_k) $ $$ (f, \varphi_k) = (f-S_n, \varphi_k) + (S_n, \varphi_k)$$
+		Из неравенства Коши--Буняковского:
+	\[
+		(f-S_n, \varphi_k) \leqslant ||f-S_n||||\varphi_k|| = ||f-S_n|| \underset{n\rightarrow\infty}{\longrightarrow}0
+	\]
+	\[
+		(S_n, \varphi_k)= \left( \sum_{i=1}^n\alpha_j\varphi_j,\varphi_k \right) = \alpha_k,\; 
+	Так как \begin{cases}
+		j \neq k \rightarrow (\varphi_j,\varphi_k) = 0\\ j = k \rightarrow (\varphi_j,\varphi_k = 1)
+	\end{cases} \Rightarrow (f,\varphi_k) = \alpha_k\]
+	Условие 3 следует из т. 9.2.
+\end{greyProof}

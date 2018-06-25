@@ -1,0 +1,107 @@
+\documentclass{letnab}
+
+\newtheorem*{determenition}{Определение}
+\newcommand{\p}{\partial}
+
+\rhead{Гармонический анализ МФТИ}
+\lhead{Экзамен}
+\renewcommand{\headrulewidth}{2pt}
+
+
+\usepackage{xcolor,colortbl}
+
+\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
+\newcommand{\und}{\;\&\;}
+\definecolor{Gray}{gray}{0.85}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+
+\newcolumntype{g}{>{\columncolor{Gray}}X[c]}
+
+\usepackage{tabularx,environ}
+
+\definecolor{urlcolor}{HTML}{0000FF} % цвет гиперссылок
+
+\hypersetup{pdfstartview=FitH, urlcolor=urlcolor, colorlinks=true}
+
+\NewEnviron{greySmth}[1]
+{\begin{table}[H]
+		\begin{tabularx}{\textwidth}{>{\columncolor{Gray}}p{6.4em}  >{\columncolor{Gray}}X}
+			#1 & 
+		\BODY
+		\end{tabularx}
+	\end{table}
+}
+
+\NewEnviron{greyDefinition}
+{\begin{table}[H]
+		\begin{tabularx}{\textwidth}{>{\columncolor{Gray}}p{06.4em}  >{\columncolor{Gray}}X}
+			\begin{definition}
+			\end{definition} & 
+			\BODY
+		\end{tabularx}
+	\end{table}
+}
+
+\NewEnviron{greyTheorem}
+{\begin{table}[H]
+		\begin{tabularx}{\textwidth}{>{\columncolor{Gray}}p{6.4em}  >{\columncolor{Gray}}X}
+			\begin{theorem}
+			\end{theorem} & 
+			\BODY
+		\end{tabularx}
+	\end{table}
+}
+
+
+\NewEnviron{greyProof}
+{\begin{table}[H]
+		\begin{tabularx}{\textwidth}{>{\columncolor{Gray}}p{0.5em} X}
+			$ \! $ & \textbf{Доказательство.} \newline
+		\BODY
+		\end{tabularx}
+	\end{table}
+}
+
+\NewEnviron{greyEmpty}
+{\begin{table}[H]
+		\begin{tabularx}{\textwidth}{>{\columncolor{Gray}}p{0.5em} X}
+			$ \! $ & 	
+			\BODY
+		\end{tabularx}
+	\end{table}
+}
+
+\begin{document}
+	\input{cover.tex}
+	\tableofcontents
+	\newpage
+	\input{question_1.tex}
+	\newpage
+	\input{question_2.tex}
+	\newpage
+	\input{question_3.tex}
+	\newpage
+	\input{question_4.tex}
+	\newpage	
+	\input{question_5.tex}
+	\newpage
+	\input{question_6.tex}
+	\newpage
+	\input{question_7.tex}	
+	\newpage
+	\input{question_8.tex}
+	\newpage
+	\input{question_9.tex}
+	\newpage
+	\input{question_10.tex}	
+	\newpage
+	\input{question_11.tex}	
+	\newpage
+	\input{question_12.tex}	
+	\newpage
+	\input{question_13.tex}	
+	\newpage
+	\input{question_14.tex}	
+	\newpage
+	\input{question_15.tex}	
+\end{document}

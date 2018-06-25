@@ -1,0 +1,53 @@
+\section{Теоремы Вейерштрасса о приближении непрерывных функций тригонометрическими и алгебраическими членами.}
+\[
+	T_m(x) = A_0 + \sum A_k \cos \dfrac{k\pi x}{l} + B_k \sin \dfrac{k \pi x}{l}\text{ --- тригоном. многочлен}
+\]
+\begin{greyTheorem}
+	\textbf{Теорема Вейерштрасса.} Любую $ 2l $--периодическую непрерывную на $ \mathbb{R} $ функцию $ y = f(x) $ с любой степенью точности можно равномерно на $ \mathbb{R} $ приблизить тригонометрическим многочленом, т.е.
+	\[
+		\forall \varepsilon > 0 \exists T_m: \max_{x \in [-l,l]} |f(x) - T_m(x) | < \varepsilon
+	\]
+\end{greyTheorem}
+\begin{greyProof}
+	Мы продолжили $ f $ на $ \mathbb{R} $ с периодом $ 2l $ и к полученной функции применим теорему Фейера. Тогда:
+	\[
+		\forall \varepsilon>0 \exists N = N(\varepsilon): \forall n \geqslant N \forall x \mapsto |\sigma_{n}(x) - f(x) | < \varepsilon
+	\]
+	В качества $ T_m(x) $ выбрали некоторую сумму Фейера $ \sigma_n(f,x) $ при $ n \geqslant N $. Тогда для $ T_m(x)  $ выполняется:
+	\[
+\forall \varepsilon > 0 \exists T_m: \max_{x \in [-l,l]} |f(x) - T_m(x) | < \varepsilon
+\]
+\end{greyProof}
+\begin{greyTheorem}
+	Любую непрерывную на $ [a,b]  $ функцию $ y=f(x) $ с любой степенью точностью можно \textit{равномерно} на $ [a,b] $ приблизить многоленном, т.е. \[
+	\forall \varepsilon > 0 \, \exists P_n(x) = \alpha_0 + \alpha_1 x + \ldots + \alpha_n x^n: max|f(x) - P_n(x) | < \varepsilon \;\forall x \in [a,b]
+	\]
+\end{greyTheorem}
+\begin{greyProof}
+	I. $ [a,b] = [0,l] $, $ f $ четно продолжим на $ [-l;0] $ и периодически с периодом $ 2l $ на $ \mathbb{R} $, обозначим $  \tilde{f}(x) =f(x),\; x\in [0;l] $
+	\[
+		\forall \varepsilon > 0 \, \exists T_m: \max_{x\in[0,l]} |f(x) - T_m(x) | < \varepsilon/2
+	\]
+	$ y = \cos \dfrac{k \pi x}{l},\; y = \sin \dfrac{k\pi x}{l} $ --- раскладываются в ряд Тейлора, который равномерно сходится, в частности, на $ [0,l] \Rightarrow T_m$ раскладывается в ряд Тейлора, равномерно сходящийся на $ [0,l] $
+\end{greyProof}
+\begin{greyEmpty}
+	Если $ P_n(x) $ --- частична сумма ряда Тейлора $ T_m(x) $, в силу равномерной сходимости 
+	\[
+		\forall \varepsilon > 0 \exists n: \max |T_m(x) - P_n(x) | < \frac{\varepsilon}{2}\; \forall x \in [0,l]
+	\]
+	\begin{multline*}
+		\forall x \in [0,l] \, |f(x) - P_n(x) | \leqslant |f(x) - T_m(x)| + |T_m(x) - P_n(x)| \leqslant \max |f(x) - T_m(x)| +\\+ \max |T_m(x) - P_n(x) | < \varepsilon/2 + \varepsilon/2 = \varepsilon
+	\end{multline*}
+	II. $ [a,b] $ --- произвольный. $ x = a + \dfrac{t}{l}(b-a),\; t \in [0,l] $
+	\[		F(t) = f\left(a+\dfrac{t}{l}(b-a)\right) 
+	\]
+	$F(t) \text{ --- непрерывна на } [a,b]\text{ как суперпозиция двух непрерывных функций.} $
+	\[
+		\forall \varepsilon > 0 \exists P_n: \max |F(t) - P_n(t) | < \varepsilon \;\forall t \in [0,l]
+	\]
+	$ t = \dfrac{x-a}{b-a}l \rightarrow P_n(t) = Q_n(x) \Rightarrow $
+	\[
+		\forall \varepsilon > 0\, \exists Q_n: \max |f(x) - Q_n(x) | < \varepsilon\; \forall x \in [a,b]
+	\]
+	А значит случай I верен при всех $ x \in [a,b] $
+\end{greyEmpty}

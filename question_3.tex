@@ -1,0 +1,74 @@
+\section{Достаточные условия сходимости ряда Фурье в \mbox{точке}.}
+\begin{greyTheorem}
+	\textbf{Признак Дини.} 	Пусть $ f \in L_R^1[-l,l] $ продолжена с периодом $ 2l $ на $ \mathbb{R} $, а $ S_0 $ --- такое число, что для некоторого $ \delta > 0,\; \delta \in (0,l)  $ сходится интеграл
+	\[
+		\int_0^\delta \dfrac{\abs{f(x_0+z) + f(x_0-z) -2S_0 }}{z} dz,
+	\] 
+	тогда ряд Фурье функции $ f $ сходится в точке $ x_0 $ к числу $ S_0 $: $$ S_n^f(x_0) \underset{n\rightarrow\infty}{\longrightarrow} S_0$$
+\end{greyTheorem}
+\begin{greyProof}
+	$ \dfrac{f(x_0+z) + f(x_0-z) -2S_0}{z} \in L_R^1[0,l]$
+	
+	$$ \int_{-\pi}^{\pi} D_n(u)du = \int_{-\pi}^\pi \left( 1/2 + \cos u + \ldots + \cos nu \right) du =\pi,$$ в силу четности $$ \int_0^\pi D_n(u)du = \pi/2  \text{ и }  \int_{0}^{l} D_n \left(\dfrac{\pi z}{l} \right)dz = \dfrac{l}{2},$$ поэтому получим 
+	$$
+		S_0 = \dfrac{2}{l} \int_{0}^l S_0 D_n \left(\dfrac{\pi z}{l}\right)dz.
+	$$
+	В силу $$ S_n^f(x) = \dfrac{1}{l} \int_{0}^l \left(f(x+z) + f(x-z) \right) D_n\left(\frac{\pi}{l}z\right) dz $$
+	\begin{multline*}
+		S_n^f(x_0) -S_0 = \dfrac{1}{l} \int_{0}^l  \dfrac{f(x_0+z) + f(x_0-z)}{2\sin \frac{\pi}{2l}z} \sin \left[ \frac{\pi}{l}(n+1/2)z \right] dz - S_0 \frac{2}{l} \int_{0}^l D_n\left(\frac{\pi}{l}z\right)dz = \\ = \frac{1}{l} \int_{0}^l \dfrac{f(x_0+z) + f(x_0-z)-2S_0}{2\sin \frac{\pi}{2l}z} \sin \left[ \frac{\pi}{l}(n+1/2)z \right] dz 
+	\end{multline*}
+	$$ g(z) = \dfrac{f(x_0+z) + f(x_0-z) - 2S_0}{z} \frac{z}{2\sin \dfrac{\pi}{2l}z}  $$
+	 На отрезке $ [0,l] $ знаменатель обращается в 0 при $ z = 0 $, а $ \lim_{z\rightarrow 0} \dfrac{z}{2 \sin \frac{\pi z}{2 l }} = \dfrac{l}{\pi} $, поэтому функция $ \dfrac{z}{2\sin \left(\frac{\pi z}{2l} \right)} $ ограничена.
+\end{greyProof}
+\begin{greyEmpty}	 
+ Так как $ g(z) \in L_R^1 [0,l] $, то по теореме Римана интеграл в правой части разности $ S_n^f(x_0) - S_0 $ стремится к нулю при $ n \rightarrow \infty $, т.е. $ S_n^f(x_0) - S_0 \underset{n \rightarrow \infty}{\longrightarrow} 0$, поэтому $$ \lim\limits_{n \rightarrow \infty} S_n^f(x_0) = S_0 $$
+\end{greyEmpty}
+\textbf{Признак Гельдера.}
+\begin{greyDefinition} Функция $ y = f(x) $  в т. $ x_0 $ удовлетворяет условию Гельдера, если
+ \begin{enumerate}
+	\item существуют конечные значения $ f(x_0+0),\; f(x_0-0) $
+	\item $ \exists \alpha \in (0,1],\; \exists C>0,\; \exists \delta> 0: \forall z \in (0,\delta) $
+	
+	$| f(x_0-z) - f(x_0-0) | \leqslant  Cz^\alpha$
+	
+	$ |f(x_0+z) - f(x_0+0) | \leqslant Cz^\alpha$
+	
+	$ \alpha $ --- показатель Гельдера, при $ \alpha=1 $ условие выше --- условие Липшица.
+\end{enumerate}
+\end{greyDefinition}
+\begin{greySmth}{Введем.}
+	Обобщенную левую производную:
+$$f_-'(x_0) = \lim\limits_{z \rightarrow -0}\dfrac{f(x_0-z) - f(x_0-0)}{-z} $$
+Обобщенную правую производную:
+$$f_+'(x_0) = \lim\limits_{z \rightarrow +0} \dfrac{f(x_0+z)-f(x_0+0)}{z} $$
+\end{greySmth}
+\begin{greySmth}{Предложение.}
+	Если у функции $ y=f(x) $ в точке $ x_0 $ существуют конечные обобщенные производные $ f_\pm'(x_0) $, то функция $ f $ в точке $ x_0 $ удовлетворяет условиям Липшица.
+\end{greySmth}
+\begin{greyProof}
+	$ \exists \alpha \in (0,1],\; \exists C_{1,2}>0,\; \exists \delta> 0: \forall z \in (0,\delta) \mapsto
+	\begin{cases}
+	  \left| \dfrac{f(x_0-z)-f(x_0-0)}{-z}  \right| \leqslant C_1\\[0.9em]
+	
+	 \left| \dfrac{f(x_0+z)-f(x_0+0)}{z}  \right| \leqslant C_2
+	 \end{cases}$
+	 
+	Тогда выберем $C = \max\{C_1,C_2\} \rightarrow$ условие Гельдера при $ \alpha = 1 $, т.е. условие \mbox{Липшица}.
+\end{greyProof}
+\paragraph{Следствие.} Если функция $ y=f(x) $ в т. $ x_0 $ имеет производную, то она в этой точке удовлетворяет условию Липшица.
+\paragraph{Замечание.} В обратную сторону утверждение следствия неверно. Пример: $ y = |x| $ --- в т. $ x_0=0 $ удовлетворяет Липшицу, но не является дифференцируемой в этой точке.
+\begin{greyTheorem}
+	Пусть функция $ f \in L_R^1[-l,l] $ продолжена с периодом $ 2l $ на $ \mathbb{R} $ и в точке $ x_0 $ удовлетворяет условию Гельдера, тогда тригонометрический ряд Фурье функции $ f $  в точке $ x_0 $ сходится к $$ \dfrac{f(x_0+0)+f(x_0-0)}{2}. $$ Если кроме того, $ f $ непрерывна в т. $ x_0 $, то тригонометрический ряд \mbox{Фурье} функции $ f $ в этой точке сходится к $ f(x_0) $
+\end{greyTheorem}
+\begin{greyProof}
+	Обозначим $ S_0 = \dfrac{f(x_0+0) + f(x_0-0)}{2} $
+	\begin{multline*}
+		\forall z \in (0,\delta) \mapsto \dfrac{\left| f(x_0+z) + f(x_0-z)-2S_0 \right|}{z} \leqslant \\ \leqslant \dfrac{\left| f(x_0+z) - f(x_0+0) \right|}{z} + \dfrac{\left| f(x_0-z) - f(x_0 - 0)\right|}{z}\leqslant \\ \leqslant \dfrac{Cz^\alpha + Cz^\alpha}{z} = \dfrac{2C}{z^{1-\alpha}},
+	\end{multline*}
+	Но так как $\alpha \in (0,1],\text{то } 1-\alpha \in [0,1) \Rightarrow $
+	
+	$$  \int_{0}^\delta \dfrac{dz}{z^{1-\alpha}}<\infty \overset{\text{пр. сравнения}}{\Longrightarrow}\int_{0}^\delta \dfrac{|f(x_0+z) + f(x_0-z) - 2S_0}{z}\, dz < \infty \overset{\text{пр. Дини}}{\Longrightarrow}$$
+	\[ \Rightarrow S_n^f(x_0) \underset{n\rightarrow \infty}{\longrightarrow} S_0 = \dfrac{f(x_0+0)+ f(x_0-0)}{2} \]
+\end{greyProof}
+\begin{greySmth}{Следствие.} Пусть функция $ f \in L_R^1[-l,l] $ продолжена с периодом $ 2l $ на $ \mathbb{R} $ и в точке $ x_0 $ у нее существуют конечные $ f_\pm'(x_0) $, тогда тригонометрический ряд Фурье функция $ f $ в т. $ x_0 $ сходится к $ \dfrac{f(x_0+0) + f(x_0-0)}{2} $. Если же $ f $ дифференцируем в т. $ x_0 $, то тригонометрический ряд Фурье в той т. сходится к $ f(x_0) $.
+\end{greySmth}

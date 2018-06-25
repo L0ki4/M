@@ -1,0 +1,50 @@
+\section{Полнота тригонометрической системы в пространстве функций, интегрируемых с квадратом. Сходимость ряда Фурье в среднем квадратичном, равенство Парсеваля для тригонометрической системы.}
+
+\textbf{\large Полнота тригонометрических систем.} Пусть имеем:
+\[
+	\Phi = \{ \dfrac{1}{\sqrt{kl}},\; \dfrac{1}{\sqrt{l}} \cos \dfrac{k\pi x}{l},\; \dfrac{1}{\sqrt{l}}\sin \dfrac{k \pi x}{l} \}_{k=1}^\infty\text{ --- ортонормированная система}
+\]
+\begin{greyDefinition}
+	Подмножество $ N' $ множества нормированного пространства $ N$ называется \textbf{плотным} в $ N $, если 
+	\[
+		\forall g\in N \;\&\; \forall \varepsilon > 0\; \exists f\in N': ||f-g||<\varepsilon
+	\]
+\end{greyDefinition}
+\begin{greySmth}{\textbf{Теорема 0}}
+	Подмножество $ \tilde{C}[a,b]$ пространства $ L_R^2[a,b] $ плотно в $ L_R^2[a,b] $
+\end{greySmth}
+\begin{greyTheorem}
+	Если ортонормированная система $ \Phi = \{ \varphi_k \}_{k=1}^\infty $ полна в $ \tilde{C}[a,b] $, то она полна в $ L_R^2[a,b] \text{ и }L_C^2[a,b]$
+\end{greyTheorem}
+\begin{greyProof}
+	По теореме 0 
+	\[
+	\forall \varepsilon> 0 \;\&\; \forall f \in \mathcal{L}_R^2 [a,b] \;\exists g \in \tilde{\mathcal{C}}[a,b]: ||f - g ||_2 < \varepsilon/2
+	\]
+	Система $ \Phi $ полна в $ \tilde{\mathcal{C}}[a,b] \Rightarrow \exists \alpha_1,\ldots,\alpha_n: 
+	||g - \sum_{k=1}^n \alpha_k\varphi_k ||_c < \dfrac{\varepsilon}{2\sqrt{b-a}} $
+	\begin{multline*}
+	||f - \sum_{k=1}^n \alpha_k \varphi_k || = ||f -g +g - \sum_{k=1}^n \alpha_k \varphi_k||_2 \leqslant ||f-g||_2 + ||g - \sum_{k=1}^n \alpha_k \varphi_k||_2 =\\= ||f-g||_2 + \sqrt{b-a}||g -\sum_{k=1}^n \alpha_k\varphi_k||_C < \varepsilon/2 + \varepsilon/2 = \varepsilon
+	\end{multline*}
+	$ \Rightarrow \Phi$ полна в $ L_R^2[a,b] $ и так как она состоит из непрерывных функций, то $ \Phi $ полна в $ L_C^2[a,b] $
+\end{greyProof}
+\begin{greyTheorem}
+	Тригонометрические системы полны в $ \mathcal{L}_R^2[-l,l] \text{ и в } \mathcal{L}^2_C[-l,l]$
+\end{greyTheorem}
+\begin{greyProof}
+	По теореме Вейерштрасса любую непрерывную функцию можно равномерно приблизить с любой точностью тригонометрическим многочленом. Тогда \[
+		\forall f \in C[a,b]\;\&\; \forall\varepsilon>0 \exists \alpha_1,\ldots,\alpha_n: ||f - \sum_{k=1}^n \alpha_k\varphi_k || < \varepsilon
+	\]
+	Следовательно тригонометрическая система полна в C, тогда по теореме 10.1 она полна в $ \mathcal{L}_R^2[a,b] $ и $ \mathcal{L}_C^2[a,b] $
+\end{greyProof}
+\begin{greySmth}{Несколько фактов.}
+\[
+\Phi = \left\{   \dfrac{1}{\sqrt{2l}},\; \dfrac{1}{\sqrt{l}}\cos \dfrac{k\pi x}{l},\; \dfrac{1}{\sqrt{l}}\sin \dfrac{k\pi x}{l}, \ldots   \right\}_{k=1}^\infty \qquad \alpha_k,\; \beta_k
+\]
+	\begin{enumerate}
+	\item 	$ \Phi $ ортонормированный базис в $ \mathcal{L}_R^2[-l,l] $, т.е. тригонометрический ряд Фурье $$ \forall f \in \mathcal{L}_R^2[-l,l] $$ сходится по норме $ ||\circ||_2 $ к $ f $
+	\item Равенство Парсеваля $$ \alpha_0^2 + \sum_{k=1}^\infty \alpha_k^2 + \beta_k^2 = ||f||^2_2 $$
+	$$ \dfrac{a_0^2}{2} + \sum_{k=1}^\infty a_k^2 + b_k^2 = \dfrac{1}{l} ||f||_2^2 $$
+	\item Система $ \Phi $ замкнута в $ L_R^2[-l,l] $, т.е. $ (f,\varphi_k)=0 \;\forall k \Rightarrow f =0 $ (в смысле определения эквивалентных функций)
+	\end{enumerate}
+\end{greySmth}

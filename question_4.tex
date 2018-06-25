@@ -1,0 +1,130 @@
+\section{Дифференцирование и интегрирования рядов Фурье. Порядок убывания коэффициентов Фурье.}
+\begin{greyDefinition}Функция $ y = f(x) $ называется \textbf{кусочно непрерывной} на отрезке $ [a,b] $, если $ \exists T = \{ a =x_0<x_1<\ldots<x_n=b \} $, такое что $ f $ непрерывно на $ (x_{i-1},x_i),\;i =\overline{1,n} $ и существует конечное $ f(a+0),\; f(x_i \pm 0),\; i =\overline{1,n},\; f(b-0) $
+\end{greyDefinition}
+
+Пример $y =  \begin{cases}
+\text{sign}x, &x \in (-1,1)\\
+0, &x = \pm 1 
+\end{cases} $, продолжим с периодом 2 на $ \mathbb{R} \Rightarrow \forall [a,b]  $ содержит точку $ x = n,\; n \in \mathbb{Z} $, следовательно $ y $ --- кусочно непрерывная.
+
+\begin{greyDefinition} Функция  $ y=f(x) $ называется \textbf{кусочно непрерывно дифференцируемой} на $ [a,b] $, если $ \exists T=\{ a=x_0<x_1<\ldots<x_n=b \} $, такие, что на $ [x_{i-1},x_i],\;i=\overline{0,n} $, функция $ f $ обладает непрерывными производными $ f' $, может быть с изменением значения функции $ f $ в точке $ x_k,\;k=\overline{1,n} $
+\end{greyDefinition}
+\begin{greyDefinition} Функция $ f $ называется \textbf{кусочно гладкой} на отрезке $ [a,b] $, если она непрерывна на отрезке $ [a,b] $ и кусочно непрерывно дифференцируема на нем.
+\end{greyDefinition}
+
+\paragraph{Замечание 1.} $ y=f(x) $ периодическая с периодом $ 2l $ на $ \mathbb{R} $
+\[
+	f(x+2l)=f(x) \Rightarrow f(-l) = f(l)
+\]
+и $ f $ кусочно гладкая на $ [-l,l] $, то $ f $ кусочно гладкая на любом $ [a,b] \subset \mathbb{R} $
+\paragraph{Замечание 2.} Производная $ f' $ кусочно непрерывной дифференцируемой на $ [a,b] $ функции $ y = f(x) $ будет кусочно непрерывной на $ [a,b] $ функцией.
+\paragraph{Замечание 3.} Тригонометрический ряд Фурье кусочно непрерывной дифференцируемой на $ [a,b] $ функции $  y = f(x)  $ в каждой точке непрерывности функции $ f $ сходится к $ f(x) $, а в точке разрыва $ x $ сходится к $ 1/2 \left[ f(x-0) + f(x+0) \right] $
+
+\textbf{\large О почленном дифференцировании рядов Фурье.}
+\begin{greyTheorem}
+	Пусть $ y=f(x),\; 2l $--периодична на $ \mathbb{R} $ и кусочно гладкая на $ [-l,l] $, тогда тригонометрический ряд Фурье функции $ y=f'(x) $ получается из тригонометрического ряда Фурье функции $ f $ путем его почленного дифференцирования. 
+\end{greyTheorem}
+\begin{greyProof}
+	\[
+		f(x) \sim \dfrac{a_0}{2} + \sum_{k=1}^\infty a_k\cos \dfrac{k\pi x}{l} + b_k \sin \dfrac{k\pi x}{l}
+	\]
+	\[
+		f'(x) \sim \dfrac{\overline{a_0}}{2} + \sum_{k=1}^\infty \overline{a_k}\cos \dfrac{k\pi x}{l} + \overline{b_k} \sin \dfrac{k\pi x}{l}
+	\]
+	\[
+		\overline{a_0} = \dfrac{1}{l}\int_{-l}^l f'(x)dx= \dfrac{1}{l} (f(l)-f(-l)) =0
+	\]
+	\[
+		\overline{a_k} = \dfrac{1}{l} \int_{-l}^lf'(x) \cos \dfrac{k\pi x}{l} dx = \dfrac{1}{l}\left[ f(x)\cos \dfrac{k\pi x}{l}\right|_{-l}^l + \dfrac{k\pi}{l} \left. \int_{-l}^lf(x)\sin \dfrac{k\pi x}{l} dx \right] = \dfrac{k\pi }{l} b_k
+	\]
+	\[
+		\overline{b_k} = \dfrac{1}{l} \int_{-l}^l f'(x) \sin \dfrac{k\pi x}{l} dx = \dfrac{1}{l} \left[ f(x)\sin \dfrac{k\pi x}{l} \right|_{-l}^l - \dfrac{k\pi}{l} \left. \int_{-l}^lf(x)\cos \dfrac{k\pi x}{l} dx \right] = -\dfrac{k\pi}{l} a_k
+	\]
+	\textbf{Формальное дифференцирование} тригонометрического ряда Фурье функции $ f $ дает:
+	\[
+		\sum_{k=1}^\infty \fbox{$ -\dfrac{k\pi}{l}a_k $} \sin \dfrac{k\pi x}{l} + \fbox{$\dfrac{k\pi}{l}b_k$}\cos \dfrac{k\pi x}{l}
+	\]
+\end{greyProof}
+\begin{greySmth}{Следствие.} Пусть $ f $ $ 2l $--периодическая на $ \mathbb{R} $ функция, имеет непрерывную производную на $ [-l,l] $ до порядка $ (m-2) $ включительно и кусочно гладкую производную порядка $ (m-1) $ на $ [-l,l] $, тогда тригонометрический ряд Фурье функции $ f^{(m)} $ получается из тригонометрического ряда Фурье функции $ f $ путем формального $ m $--кратного дифференцирования.
+\end{greySmth}
+\textbf{\large Асимптотические оценки коэффициентов Фурье.} 
+\begin{greySmth}{Предложение 1.} Пусть функция $ y=f(x),\;2l $--периодическая на $ \mathbb{R} $ и кусочно гладкая на $ [-l,l] $, тогда для ее коэффициентов Фурье справедливы следующие асимптотические оценки:
+\[
+	a_n = o\left( \dfrac{1}{n} \right),\; b_n = o\left( \dfrac{1}{n} \right) \text{ при } n \rightarrow \infty 
+\]
+\end{greySmth}
+\begin{greyProof}
+	Следует из того, что коэф. Фурье производной $ f' $ равны $ \overline{a_k}  = \dfrac{\pi k}{l} b_k,\; \overline{b_k} = \dfrac{\pi k}{l}a_k$. Так как $ f' $ кусочно-непрерывна на $ [-l,l] $, то $ f' \in L_R^1[-l,l]  \Rightarrow $ по теореме Римана об осциляции $ \overline{a_k},\; \overline{b_k} $ стремятся к 0 при $ k \rightarrow \infty $
+\end{greyProof}
+\textbf{Вывод из предложения:} 
+\[
+	\overline{a_k} = \dfrac{\pi}{l} \dfrac{b_k}{\frac{1}{k}} \underset{k\rightarrow \infty}{\longrightarrow} 0,\quad \overline{b_k} = -\dfrac{\pi}{l} \dfrac{a_k}{\frac{1}{k}} \underset{k\rightarrow \infty}{\longrightarrow} 0
+\]
+\begin{greySmth}{Предложение 2.} Пусть $ f $ кусочно непрерывна дифференцируема на $ [-l,l] $ и периодически с периодом $ 2l $ продолжена на $ \mathbb{R} $. Тогда для коэффициентов Фурье функции $ f $ справедливо:
+\[
+	\exists C<0: \forall k \in \mathbb{N} \mapsto |ka_k| \leqslant C \,\&\, |kb_k| \leqslant C
+\]
+\[
+	a_k = O \left( \dfrac{1}{k} \right),\quad b_k = O\left( \dfrac{1}{k} \right),\; k\rightarrow \infty
+\]
+\end{greySmth}
+\begin{greyProof}
+	\[
+	\exists T = \{ -l=x_0<x_1<\ldots<x_n=l \}
+	\]
+	$ f $ непрерывно дифференцируема на $ [x_{k-1}, x_k],\; k = \overline{1,n} $. Тогда
+\begin{multline*}	
+		|ka_k| = \left| \dfrac{k}{l} \int_{-l}^l f(x) \cos \dfrac{k\pi x}{l} \right| = \left| \begin{array}{c} \rowcolor{red!20} f(x) = u \\ \cos \dfrac{k \pi x}{l}dx = dv  \end{array} \right|=\\= \dfrac{k}{l}\left|  \dfrac{l}{k\pi}f(x) \sin \dfrac{k\pi x}{l} \Big|_{-l}^l - \dfrac{l}{k\pi}\int_{-l}^l f'(x) \sin \dfrac{k \pi x}{l}dx  \right| =\\ =\dfrac{k}{l} \left| \sum_{i=1}^n \int_{x_{i-1}}^{x_i} f(x)\cos \dfrac{k\pi x}{l} dx  \right| = \\ = \dfrac{k}{l} \left| \sum_{i=1}^n \left[ \dfrac{l}{k\pi} f(x) \sin \dfrac{k\pi x}{l}\Big|_{x_{i-1}}^{x_i} - \dfrac{l}{k\pi} \int_{x_{i-1}}^{x_i} f'(x)\sin \dfrac{k\pi x}{l} dx \right] \right| \leqslant \\ \leqslant \dfrac{2}{\pi} \sum_{i=0}^{n} \left| f(x_i) \right| + \dfrac{1}{\pi} \left| \int_{-l}^l f'(x) \sin \dfrac{k\pi x}{l} dx \right|
+\end{multline*}
+$ \dfrac{2}{\pi} \sum_{i=0}^n |f(x_i)| = B,\, \exists A_1>0 \& A_2>0: \begin{matrix}
+	\left|  \dfrac{1}{\pi} \int_{-l}^l f'(x) \sin \dfrac{k\pi x}{l} dx \right| \leqslant A_1\\[1em]	\left|  \dfrac{1}{\pi} \int_{-l}^l f'(x) \cos \dfrac{k\pi x}{l} dx \right| \leqslant A_2
+\end{matrix}$
+
+Тогда пусть $ C = \max\{B+A_1, B+A_2\} $, тогда $ |ka_k|\leqslant C  $ и $ |kb_k| \leqslant C $
+\end{greyProof}
+\begin{greySmth}{Следствие.} Пусть $ y=f(x),\; 2l$--периодическая на $ \mathbb{R} $ и на $ [-l,l] $ обладает непрерывной производной до порядка $ (m-2)  $ включительно и кусочно гладкой производной порядка $ (m-1) $. Тогда для коэффициентов Фурье функции $ f $ справедлива оценка:
+\[
+	a_k = o\left(\dfrac{1}{k^m}\right),\; b_k = o\left( \dfrac{1}{k^m} \right),\; k \rightarrow \infty
+\]
+\end{greySmth}
+\begin{greyProof}
+	\[
+		f(x) \sim \dfrac{a_0}{2} + \sum_{k=1}^\infty a_k \cos \dfrac{k\pi x}{l} + b_k \sin \dfrac{k\pi x}{l}
+	\]
+	\[
+		f^{(m)}(x) \sim \sum_{k=1}^\infty C_m a_k k^m \cos \left( \dfrac{k\pi x}{l} + m \dfrac{\pi}{2}\right) +C_m b_k k^m \sin \left( \dfrac{k\pi x}{l} + m\dfrac{\pi}{2} \right)
+	\]
+	\[
+		C_m = \left( \dfrac{\pi}{l} \right)^m \left.:\begin{aligned}
+		|a_kk^m | \rightarrow 0\\
+		|b_kk^m| \rightarrow 0
+		\end{aligned} \right\} k \rightarrow \infty
+	\]
+\end{greyProof}
+
+\textbf{\large Почленное интегрирование рядов Фурье.}
+\begin{greyTheorem}
+	Пусть функция $ y=f(x) $ кусочно непрерывная на $ [-l,l],\;2l $--периодическая продолжена на $ \mathbb{R},\; f(x) \sim \dfrac{a_0}{2} + \sum_{k=1}^\infty a_k \cos \dfrac{k\pi x}{l} + b_k \sin \dfrac{k\pi x}{l} $ тогда тригонометрический ряд Фурье функции $ \Phi(x) =  \int_{0}^{x} f(t)dt - \dfrac{a_0x}{2} $ может быть получена путем формального интегрирования ряда Фурье функции $ f $.
+\end{greyTheorem}
+\begin{greyProof}
+	$ F(x) = \int_{0}^{x} f(t)dt  $ --- кусочно гладкая на $ [-l,l] \Rightarrow \Phi(x)$ --- кусочно гладкая на $ [-l,l] $, т.к. $ \Phi(x) = F(x) - a_0x/2 $ имеет кусочно--непрерывную производную $ f(x) - a_0/2 $, причем $ \forall x: $
+	\[
+		\Phi(x+2l) - \Phi(x) = \int_{x}^{x+2l} f(t)dt - a_0l = \int_{-l}^l f(t)dt - a_0l = 0 \Rightarrow
+	\]
+	$ \Rightarrow \Phi\; 2l$--периодическая на $ \mathbb{R} $. Тогда по первой теореме этого пункта
+	\[
+		\Phi(x) \sim \dfrac{A_0}{2} + \sum_{k=1}^\infty A_k \cos \dfrac{k\pi x}{l} + B_k \sin \dfrac{k\pi x}{l}
+	\]
+	$ a_k = \dfrac{k\pi}{l} B_k,\; b_k = - \dfrac{k\pi}{l}A_k,\;\text{причем } \Phi(0)=0 \rightarrow \dfrac{A_0}{2} + \sum_{k=1}^\infty A_k = 0 \rightarrow\dfrac{A_0}{2} = \dfrac{l}{\pi} \sum_{k=1}^\infty \dfrac{b_k}{k} $
+q\end{greyProof}
+\begin{greyEmpty}
+	\[
+		\dfrac{l}{\pi} \left[ \sum_{k=1}^{\infty} \dfrac{b_k}{k} + \sum_{k=1}^\infty -\dfrac{b_k}{k}\cos \dfrac{k\pi x}{l} + \dfrac{a_k}{k} \sin \dfrac{k\pi x}{l}  \right] = \sum_{k=1}^\infty \dfrac{l}{\pi} \dfrac{b_k}{k} \left( 1- \cos \dfrac{k\pi x}{l}  \right) + \dfrac{l}{\pi} \dfrac{a_k}{k} \sin \dfrac{k\pi x}{l} 
+	\]
+	К такому же результату мы придем формально проинтегрировав ряд.
+\end{greyEmpty}
+\paragraph{Замечание.} $ f $ кусочно непрерывная на $ [-l,l] $ и $ 2l $--периодическая и продолжена на $ \mathbb{R} $, то для ее коэффициентов Фурье справедливо:
+\[
+	\sum_{k=1}^\infty \dfrac{b_k}{k} < \infty
+\]
+То есть $ \sum_{k=2}^\infty \dfrac{\sin \frac{k \pi x}{l}}{k} $ не может быть рядом Фурье никакой функции, так как расходится по интегральному признаку.
